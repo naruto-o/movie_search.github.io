@@ -1,0 +1,22 @@
+#submit{
+    border: 1px solid black;
+    
+}
+.button{
+    border-radius: 40%;
+    height: 20px;
+
+}
+#div2{
+    margin-top: 20px;
+    border: 2px solid black;
+    width: 120px;
+    margin-left: 45vw;
+    background-color: whitesmoke;
+    border-radius: 20%;
+    padding:10px;
+    height: 40px;
+}
+#hrr{
+    background-color: rgb(39, 39, 39);
+}

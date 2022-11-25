@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Searching System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div style = "max-width: 100%; margin: 0 auto 0 auto; border: 5px solid black; padding: 20px 10px">
+        <h1 style = "text-align: center; text-decoration: underline;">Search Your Favourite Movies</h1>
+        <input type = "text" id = "movie" placeholder = "Search your movie here" />
+        <button id = "submit" onclick="loadDoc()">Submit</button>
+
+        <div id = "demo"></div>
+    </div>
+    <div id="div2">
+        <button onclick="functiona1()" class="button" id="button1" style="border-color: grey;"></button>
+        <button onclick="functiona2()" class="button" id="button2" style="border-color: pink;"></button>
+        <button onclick="functiona3()" class="button" id="button3" style="border-color: blue;"></button>
+        <button onclick="functiona4()" class="button" id="button4" style="border-color: green;"></button>
+        <button onclick="functiona5()" class="button" id="button5" style="border-color: orange;"></button>
+    </div>
+    <hr size="7" id="hrr">
+    
+    <!-- javascript starting here -->
+    <script>
+        function loadDoc() {
+  var template = document.getElementById('movie').value;
+  document.getElementById('demo').innerHTML = '';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var response = JSON.parse(this.responseText);
+      for(var index = 0; index < response.length; index++){
+        let r = response[index].show.image.medium;
+        document.getElementById('demo').innerHTML = document.getElementById('demo').innerHTML + `<img src ='${r}' />`;
+      }
+    }
+  };
+  xhttp.open("GET", `https://api.tvmaze.com/search/shows?q=${template}`, true);
+  xhttp.send();
+}
+    </script>
+    <script src="js/index.js"></script>
+    <!-- javascript ending here  -->
+</body>
+</html>
